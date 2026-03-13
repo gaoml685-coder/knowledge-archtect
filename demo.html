@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识架构师 - 演示版</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.6s ease-out;
+        }
+
+        .animate-slide-up {
+            animation: slide-up 0.8s ease-out;
+        }
+
+        .shadow-soft {
+            box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        .shadow-glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(20px);
+        }
+
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen overflow-x-hidden">
+    <!-- Particle Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 right-0 border-b border-white/20 bg-white/80 backdrop-blur-xl z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                </div>
+                <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    知识架构师
+                </span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors flex items-center space-x-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>设置</span>
+                </button>
+                <button class="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                    我的项目
+                </button>
+                <button class="px-4 py-2 text-sm bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:shadow-glow transition-all">
+                    升级专业版
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 py-12 pt-28 relative z-10">
+        <!-- Hero Section -->
+        <div class="text-center mb-12 animate-fade-in">
+            <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
+                将经验转化为资产
+            </h1>
+            <p class="text-xl text-gray-600">
+                AI 驱动的知识管理平台，让每一次对话都成为可复用的知识
+            </p>
+        </div>
+
+        <!-- Mode Selection -->
+        <div class="flex justify-center space-x-4 mb-8">
+            <button class="flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all bg-white shadow-soft scale-105 text-gray-900">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span>PPT</span>
+            </button>
+            <button class="flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all bg-white/50 hover:bg-white/80 text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+                <span>播客</span>
+            </button>
+            <button class="flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all bg-white/50 hover:bg-white/80 text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                </svg>
+                <span>素材整理</span>
+            </button>
+        </div>
+
+        <!-- Input Area -->
+        <div class="bg-white/80 backdrop-blur-xl rounded-2xl shadow-soft border border-white/20 p-6 mb-8 animate-slide-up">
+            <div class="flex items-start space-x-4">
+                <div class="flex-1">
+                    <textarea
+                        placeholder="描述您的需求，例如：根据这段录音生成一份销冠复盘 PPT..."
+                        class="w-full h-32 resize-none border-0 focus:outline-none text-gray-900 placeholder-gray-400 bg-transparent"
+                    ></textarea>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex items-center space-x-2">
+                            <label class="cursor-pointer">
+                                <input type="file" multiple accept=".mp3,.wav,.m4a,.pdf,.docx,.pptx" class="hidden">
+                                <div class="flex items-center space-x-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                    </svg>
+                                    <span class="text-sm text-gray-600">上传文件</span>
+                                </div>
+                            </label>
+                            <button class="flex items-center space-x-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                                <span class="text-sm text-gray-600">选择主题</span>
+                            </button>
+                        </div>
+                        <button class="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:shadow-glow transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                            </svg>
+                            <span>开始生成</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Commands -->
+        <div class="mb-12 animate-slide-up">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">常用指令</h3>
+            <div class="grid grid-cols-3 gap-4">
+                <button class="flex items-center space-x-3 p-4 bg-white/80 backdrop-blur-xl rounded-xl shadow-soft border border-white/20 hover:shadow-lg hover:scale-105 transition-all group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                        文档转演示文稿
+                    </span>
+                </button>
+                <button class="flex items-center space-x-3 p-4 bg-white/80 backdrop-blur-xl rounded-xl shadow-soft border border-white/20 hover:shadow-lg hover:scale-105 transition-all group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                        将录音文件转为故事版播客
+                    </span>
+                </button>
+                <button class="flex items-center space-x-3 p-4 bg-white/80 backdrop-blur-xl rounded-xl shadow-soft border border-white/20 hover:shadow-lg hover:scale-105 transition-all group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                        提取录音中的金牌销话术
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Recent Projects -->
+        <div class="animate-slide-up">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">我的项目</h3>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-white/80 backdrop-blur-xl rounded-xl shadow-soft border border-white/20 hover:shadow-lg hover:scale-105 transition-all cursor-pointer group overflow-hidden">
+                    <div class="h-32 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-white opacity-80 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-medium text-gray-900 mb-1">销售培训课件</h4>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>PPT</span>
+                            <span>2024-03-10</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-xl rounded-xl shadow-soft border border-white/20 hover:shadow-lg hover:scale-105 transition-all cursor-pointer group overflow-hidden">
+                    <div class="h-32 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-white opacity-80 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-medium text-gray-900 mb-1">产品发布播客</h4>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>播客</span>
+                            <span>2024-03-09</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/80 backdrop-blur-xl rounded-xl shadow-soft border border-white/20 hover:shadow-lg hover:scale-105 transition-all cursor-pointer group overflow-hidden">
+                    <div class="h-32 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-white opacity-80 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-medium text-gray-900 mb-1">客户案例整理</h4>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>素材</span>
+                            <span>2024-03-08</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Particle Animation
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationFrameId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor(area) {
+                this.area = area;
+
+                if (area === 'topRight') {
+                    this.x = canvas.width * 0.6 + Math.random() * canvas.width * 0.4;
+                    this.y = Math.random() * canvas.height * 0.4;
+                } else {
+                    this.x = Math.random() * canvas.width * 0.4;
+                    this.y = canvas.height * 0.6 + Math.random() * canvas.height * 0.4;
+                }
+
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.area === 'topRight') {
+                    if (this.x > canvas.width) this.x = canvas.width * 0.6;
+                    if (this.x < canvas.width * 0.6) this.x = canvas.width;
+                    if (this.y > canvas.height * 0.4) this.y = 0;
+                    if (this.y < 0) this.y = canvas.height * 0.4;
+                } else {
+                    if (this.x > canvas.width * 0.4) this.x = 0;
+                    if (this.x < 0) this.x = canvas.width * 0.4;
+                    if (this.y > canvas.height) this.y = canvas.height * 0.6;
+                    if (this.y < canvas.height * 0.6) this.y = canvas.height;
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            const particleCount = Math.floor((canvas.width * canvas.height) / 30000);
+            particles = [];
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle('topRight'));
+            }
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle('bottomLeft'));
+            }
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    if (particles[i].area !== particles[j].area) continue;
+
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${0.15 * (1 - distance / 120)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            connectParticles();
+
+            animationFrameId = requestAnimationFrame(animate);
+        }
+
+        createParticles();
+        animate();
+    </script>
+</body>
+</html>
