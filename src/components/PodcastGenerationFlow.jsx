@@ -3,6 +3,7 @@ import { ArrowLeft, Send, Play, Pause, Download } from 'lucide-react';
 import './PPTGenerationFlow.css';
 
 const PodcastGenerationFlow = ({ projectData, onBack }) => {
+  const baseUrl = import.meta.env.BASE_URL;
   const [currentStep, setCurrentStep] = useState(1);
   const [chatMessages, setChatMessages] = useState([]);
   const [chatInput, setChatInput] = useState('');
@@ -140,7 +141,7 @@ const PodcastGenerationFlow = ({ projectData, onBack }) => {
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
               <audio
                 ref={audioRef}
-                src="/demo-podcast/回龙观杨东博选房博弈.mp3"
+                src={`${baseUrl}demo-podcast/回龙观杨东博选房博弈.mp3`}
                 onEnded={() => setIsPlaying(false)}
               />
 

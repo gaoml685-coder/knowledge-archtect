@@ -3,6 +3,7 @@ import { ArrowLeft, Download, ChevronLeft, ChevronRight, Send, FileText } from '
 import './PPTGenerationFlow.css';
 
 const PPTGenerationFlow = ({ projectData, onBack }) => {
+  const baseUrl = import.meta.env.BASE_URL;
   const [currentStep, setCurrentStep] = useState(1);
   const [extractedInfo, setExtractedInfo] = useState(null);
   const [outline, setOutline] = useState(null);
@@ -18,7 +19,7 @@ const PPTGenerationFlow = ({ projectData, onBack }) => {
     pages: 17,
     animation: '简洁过渡',
     language: '中文',
-    template: '/demo-ppt/slides/001.png'
+    template: `${baseUrl}demo-ppt/slides/001.png`
   };
 
   // 模拟的大纲数据
@@ -133,8 +134,8 @@ const PPTGenerationFlow = ({ projectData, onBack }) => {
   // 下载 PPT
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/demo-ppt/门店客源管理实战.pptx';
-    link.download = '门店客源管理实战.pptx';
+    link.href = `${baseUrl}demo-ppt/模拟生成_门店客源管理实战.pptx`;
+    link.download = '模拟生成_门店客源管理实战.pptx';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -142,7 +143,7 @@ const PPTGenerationFlow = ({ projectData, onBack }) => {
 
   // 在新窗口打开 HTML - 全屏模式
   const handleOpenHTML = () => {
-    const newWindow = window.open('/demo-ppt/play.html', '_blank');
+    const newWindow = window.open(`${baseUrl}demo-ppt/play.html`, '_blank');
     if (newWindow) {
       // 尝试全屏（需要用户交互）
       setTimeout(() => {
@@ -160,7 +161,7 @@ const PPTGenerationFlow = ({ projectData, onBack }) => {
     const newSlide = Math.max(0, previewSlide - 1);
     setPreviewSlide(newSlide);
     if (iframeRef.current) {
-      iframeRef.current.src = `/demo-ppt/play.html#${newSlide}`;
+      iframeRef.current.src = `${baseUrl}demo-ppt/play.html#${newSlide}`;
     }
   };
 
@@ -168,7 +169,7 @@ const PPTGenerationFlow = ({ projectData, onBack }) => {
     const newSlide = Math.min(16, previewSlide + 1);
     setPreviewSlide(newSlide);
     if (iframeRef.current) {
-      iframeRef.current.src = `/demo-ppt/play.html#${newSlide}`;
+      iframeRef.current.src = `${baseUrl}demo-ppt/play.html#${newSlide}`;
     }
   };
 
@@ -369,7 +370,7 @@ const PPTGenerationFlow = ({ projectData, onBack }) => {
               {isComplete ? (
                 <iframe
                   ref={iframeRef}
-                  src={`/demo-ppt/play.html#${previewSlide}`}
+                  src={`${baseUrl}demo-ppt/play.html#${previewSlide}`}
                   className="w-full h-full border-0 rounded shadow-2xl"
                   title="PPT Preview"
                 />
@@ -416,7 +417,7 @@ const PPTGenerationFlow = ({ projectData, onBack }) => {
                       onClick={() => {
                         setPreviewSlide(index);
                         if (iframeRef.current) {
-                          iframeRef.current.src = `/demo-ppt/play.html#${index}`;
+                          iframeRef.current.src = `${baseUrl}demo-ppt/play.html#${index}`;
                         }
                       }}
                       className={`flex-shrink-0 rounded border-2 transition-all ${
@@ -427,7 +428,7 @@ const PPTGenerationFlow = ({ projectData, onBack }) => {
                       style={{ width: '120px', height: '68px' }}
                     >
                       <img
-                        src={`/demo-ppt/slides/${String(index + 1).padStart(3, '0')}.png`}
+                        src={`${baseUrl}demo-ppt/slides/${String(index + 1).padStart(3, '0')}.png`}
                         alt={`第 ${index + 1} 页`}
                         className="w-full h-full object-cover"
                         onError={(e) => {
