@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowLeft, Search, Star, Users, TrendingUp, Sparkles, BookOpen, MessageSquare, Target, Award, Brain, FileText } from 'lucide-react';
 
 const SkillMarketplace = ({ onBack, onSelectSkill }) => {
+  const baseUrl = import.meta.env.BASE_URL;
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
@@ -21,7 +22,7 @@ const SkillMarketplace = ({ onBack, onSelectSkill }) => {
       category: 'training',
       icon: FileText,
       color: 'from-blue-500 to-cyan-500',
-      coverImage: '/skills/课件制作专家.png',
+      coverImage: `${baseUrl}skills/课件制作专家.png`,
       rating: 4.9,
       users: 1280,
       tags: ['PPT生成', '课件设计', '培训材料'],
@@ -33,7 +34,7 @@ const SkillMarketplace = ({ onBack, onSelectSkill }) => {
       category: 'knowledge',
       icon: Brain,
       color: 'from-purple-500 to-pink-500',
-      coverImage: '/skills/知识库管理专家.png',
+      coverImage: `${baseUrl}skills/知识库管理专家.png`,
       rating: 4.8,
       users: 956,
       tags: ['知识整理', '文档管理', '智能检索'],
@@ -45,7 +46,7 @@ const SkillMarketplace = ({ onBack, onSelectSkill }) => {
       category: 'sales',
       icon: Award,
       color: 'from-orange-500 to-red-500',
-      coverImage: '/skills/金牌经纪人销售秘籍.png',
+      coverImage: `${baseUrl}skills/金牌经纪人销售秘籍.png`,
       rating: 5.0,
       users: 2340,
       tags: ['销售话术', '成交技巧', '经验复制'],
@@ -57,7 +58,7 @@ const SkillMarketplace = ({ onBack, onSelectSkill }) => {
       category: 'sales',
       icon: MessageSquare,
       color: 'from-green-500 to-teal-500',
-      coverImage: '/skills/客户异议场景复盘.png',
+      coverImage: `${baseUrl}skills/客户异议场景复盘.png`,
       rating: 4.7,
       users: 1567,
       tags: ['异议处理', '场景复盘', '话术优化'],
@@ -69,7 +70,7 @@ const SkillMarketplace = ({ onBack, onSelectSkill }) => {
       category: 'communication',
       icon: Sparkles,
       color: 'from-indigo-500 to-purple-500',
-      coverImage: '/skills/房产知识播客生成器.png',
+      coverImage: `${baseUrl}skills/房产知识播客生成器.png`,
       rating: 4.6,
       users: 892,
       tags: ['播客制作', '内容营销', '专业传播'],
@@ -81,7 +82,7 @@ const SkillMarketplace = ({ onBack, onSelectSkill }) => {
       category: 'training',
       icon: TrendingUp,
       color: 'from-yellow-500 to-orange-500',
-      coverImage: '/skills/新人培训加速器.png',
+      coverImage: `${baseUrl}skills/新人培训加速器.png`,
       rating: 4.8,
       users: 1123,
       tags: ['新人培训', '经验传承', '快速上手'],
@@ -93,7 +94,7 @@ const SkillMarketplace = ({ onBack, onSelectSkill }) => {
       category: 'sales',
       icon: Target,
       color: 'from-pink-500 to-rose-500',
-      coverImage: '/skills/客户需求分析师.png',
+      coverImage: `${baseUrl}skills/客户需求分析师.png`,
       rating: 4.9,
       users: 1678,
       tags: ['需求分析', '精准匹配', '成交提升'],
@@ -105,7 +106,7 @@ const SkillMarketplace = ({ onBack, onSelectSkill }) => {
       category: 'knowledge',
       icon: Users,
       color: 'from-cyan-500 to-blue-500',
-      coverImage: '/skills/团队知识共享库.png',
+      coverImage: `${baseUrl}skills/团队知识共享库.png`,
       rating: 4.7,
       users: 2156,
       tags: ['团队协作', '知识共享', '经验沉淀'],

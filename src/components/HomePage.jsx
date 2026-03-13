@@ -5,6 +5,7 @@ import SettingsModal from './SettingsModal';
 import ParticleBackground from './ParticleBackground';
 
 const HomePage = ({ onStartProject, onGoToSkills, selectedSkill, onClearSkill }) => {
+  const baseUrl = import.meta.env.BASE_URL;
   const [selectedMode, setSelectedMode] = useState('ppt');
   const [inputValue, setInputValue] = useState('');
   const [selectedTemplate, setSelectedTemplate] = useState(null);
@@ -36,21 +37,21 @@ const HomePage = ({ onStartProject, onGoToSkills, selectedSkill, onClearSkill })
   ];
 
   const pptTemplates = [
-    { id: 1, name: '营销计划', preview: '/templates/营销计划.png' },
-    { id: 2, name: '个人简介', preview: '/templates/个人简介.png' },
-    { id: 3, name: '高校精品课', preview: '/templates/高校精品课.png' },
-    { id: 4, name: '工作总结', preview: '/templates/工作总结.png' },
-    { id: 5, name: '行业报告', preview: '/templates/行业报告.png' },
-    { id: 6, name: '高端产品设计方案', preview: '/templates/高端产品设计方案.png' },
-    { id: 7, name: '橙色业务提案', preview: '/templates/橙色业务提案.png' },
-    { id: 8, name: '精简商业计划书', preview: '/templates/精简商业计划书.png' },
-    { id: 9, name: '10008', preview: '/templates/10008.png' },
+    { id: 1, name: '营销计划', preview: `${baseUrl}templates/营销计划.png` },
+    { id: 2, name: '个人简介', preview: `${baseUrl}templates/个人简介.png` },
+    { id: 3, name: '高校精品课', preview: `${baseUrl}templates/高校精品课.png` },
+    { id: 4, name: '工作总结', preview: `${baseUrl}templates/工作总结.png` },
+    { id: 5, name: '行业报告', preview: `${baseUrl}templates/行业报告.png` },
+    { id: 6, name: '高端产品设计方案', preview: `${baseUrl}templates/高端产品设计方案.png` },
+    { id: 7, name: '橙色业务提案', preview: `${baseUrl}templates/橙色业务提案.png` },
+    { id: 8, name: '精简商业计划书', preview: `${baseUrl}templates/精简商业计划书.png` },
+    { id: 9, name: '10008', preview: `${baseUrl}templates/10008.png` },
   ];
 
   const recentProjects = [
-    { id: 1, name: '销售培训课件', type: 'PPT', date: '2024-03-10', thumbnail: '/projects/销售培训课件封面.png' },
-    { id: 2, name: '产品发布播客', type: '播客', date: '2024-03-09', thumbnail: '/projects/产品发布播客封面.png' },
-    { id: 3, name: '客户案例整理', type: '素材', date: '2024-03-08', thumbnail: '/projects/客户案例整理封面.png' },
+    { id: 1, name: '销售培训课件', type: 'PPT', date: '2024-03-10', thumbnail: `${baseUrl}projects/销售培训课件封面.png` },
+    { id: 2, name: '产品发布播客', type: '播客', date: '2024-03-09', thumbnail: `${baseUrl}projects/产品发布播客封面.png` },
+    { id: 3, name: '客户案例整理', type: '素材', date: '2024-03-08', thumbnail: `${baseUrl}projects/客户案例整理封面.png` },
   ];
 
   const handleFileUpload = (e) => {
